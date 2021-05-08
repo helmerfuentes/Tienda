@@ -12,18 +12,24 @@ import { ListarComponent } from 'app/pages/producto/listar/listar.component';
 import { RegistrarComponent } from 'app/pages/producto/registrar/registrar.component';
 import { ListadoCompraComponent } from '../../pages/Compras/listado-compra/listado-compra.component';
 import { RegistroCompraComponent } from '../../pages/Compras/registro-compra/registro-compra.component';
+import { ListarVentaComponent } from '../../pages/Ventas/listar-venta/listar-venta.component';
+import { ListarUsuarioComponent } from '../../pages/Usuario/listar-usuario/listar-usuario.component';
+import { RegistrarUsuarioComponent } from '../../pages/Usuario/registrar-usuario/registrar-usuario.component';
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'ListarProducto',      component: ListarComponent },
-    { path: 'RegistrarProducto/:id',      component: RegistrarComponent },
-    { path: 'ListadoCompras',      component: ListadoCompraComponent },
-    { path: 'RegistrarCompra',      component: RegistroCompraComponent },
-    { path: 'user',           component: UserComponent },
-    { path: 'table',          component: TableComponent },
-    { path: 'typography',     component: TypographyComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'maps',           component: MapsComponent },
-    { path: 'notifications',  component: NotificationsComponent },
-    { path: 'upgrade',        component: UpgradeComponent }
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'Productos', component: ListarComponent },
+  { path: 'RegistrarProducto/:id', component: RegistrarComponent },
+  { path: 'Compras', component: ListadoCompraComponent },
+  { path: 'Ventas', component: ListarVentaComponent },
+  { path: 'RegistrarCompra', component: RegistroCompraComponent },
+  { path: 'Usuarios', component: ListarUsuarioComponent },
+  { path: 'RegistrarUsuarios/:id', component: RegistrarUsuarioComponent },
+  { path: 'user', component: UserComponent },
+  { path: 'table', component: TableComponent },
+  { path: 'typography', component: TypographyComponent },
+  { path: 'icons', component: IconsComponent },
+  { path: 'maps', component: MapsComponent },
+  { path: 'notifications', component: NotificationsComponent },
+  { path: 'upgrade', component: UpgradeComponent }
 ];

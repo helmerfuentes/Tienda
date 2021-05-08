@@ -17,13 +17,13 @@ import { ListarComponent } from './pages/producto/listar/listar.component';
 import { RegistrarComponent } from './pages/producto/registrar/registrar.component';
 import { RegistrarUsuarioComponent } from './pages/Usuario/registrar-usuario/registrar-usuario.component';
 import { ListarUsuarioComponent } from './pages/Usuario/listar-usuario/listar-usuario.component';
-import { ListaProductoComponent } from './pages/Ventas/lista-producto/lista-producto.component';
 import { RegistroVentaComponent } from './pages/Ventas/registro-venta/registro-venta.component';
 import { RegistroCompraComponent } from './pages/Compras/registro-compra/registro-compra.component';
 import { ListadoCompraComponent } from './pages/Compras/listado-compra/listado-compra.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPermissionsModule } from "ngx-permissions";
+import { ListarVentaComponent } from './pages/Ventas/listar-venta/listar-venta.component';
 
 @NgModule({
   declarations: [
@@ -33,10 +33,10 @@ import { NgxPermissionsModule } from "ngx-permissions";
     RegistrarComponent,
     RegistrarUsuarioComponent,
     ListarUsuarioComponent,
-    ListaProductoComponent,
     RegistroVentaComponent,
     RegistroCompraComponent,
     ListadoCompraComponent,
+    ListarVentaComponent,
   ],
   imports: [
     RouterModule.forRoot(AppRoutes,{

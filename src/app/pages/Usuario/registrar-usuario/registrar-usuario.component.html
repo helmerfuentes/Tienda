@@ -1,1 +1,132 @@
-<p>registrar-usuario works!</p>
+<div class="row">
+  <div class="col-md-8">
+    {{form.value |json}}
+    <div class="card card-user">
+      <div class="card-header bg-info">
+        <h4 class="card-title m-b-0 text-white" *ngIf="Proceso"  >Registrar usuario</h4>
+        <h4 class=" card-title m-b-0 text-white" *ngIf="!Proceso">Actualizar usuario</h4>
+      </div>
+
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()"  >
+          <div class="form-body">
+            <h3 class="card-title">Datos acceso</h3>
+            <hr>
+            <fieldset formGroupName="usuario">
+          <div class="row">
+            <div class="col-md-6 pr-1">
+              <div class="form-group">
+                <label>Rol</label>
+                <select   name="rol"  formControlName="rolId" (change)="rolSeleccionado($event.target.value)" class="form-control custom-select">
+                  <option value="">--Seleccione--</option>
+                  <option *ngFor="let item of Roles" value="{{item.id}}" >{{item.nombre}}</option>
+              </select>
+              </div>
+            </div>
+            <div class="col-md-6 pr-1">
+              <div class="form-group">
+                <label>Usuario</label>
+                <input type="text" class="form-control"  name="usuario" formControlName="usuario"   placeholder="Usuario de ingreso" >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 pr-1">
+              <div class="form-group">
+                <label>Contraseña</label>
+                <input type="text" class="form-control"  name="password" formControlName="password"  placeholder="Digite contraseña de ingreso" >
+              </div>
+            </div>
+
+          </div>
+        </fieldset>
+          <br>
+          <h3 class="box-title m-t-40">Datos Personales</h3>
+          <hr>
+          <fieldset formGroupName="persona">
+            <div class="row">
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>Documento</label>
+                  <input type="text" class="form-control"  formControlName="documento" name="documento"  >
+                </div>
+              </div>
+            </div>
+                  <div class="row">
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                        <label>Nombres</label>
+                        <input type="text" class="form-control"  formControlName="nombres" name="nombres" placeholder="Primer y segundo nombre" >
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 pl-1">
+                      <div class="form-group">
+                        <label>Apellidos</label>
+                        <input type="text" class="form-control"  formControlName="apellidos" name="apellidos"  placeholder="Primer y segundo apellido" >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                        <label>Telefono</label>
+                        <input type="text" class="form-control" formControlName="telefono" name="telefono"  >
+                      </div>
+                    </div>
+                    <div class="col-md-6 px-1">
+                      <div class="form-group">
+                        <label>Dirección</label>
+                        <input type="text" class="form-control" formControlName="direccion" name="direccion"  >
+                      </div>
+                    </div>
+
+                  </div>
+                </fieldset>
+                </div>
+          <div class="row">
+            <div class="update ml-auto mr-auto">
+              <button  class="btn btn-primary btn-round"  >Guardar usuario</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-4">
+
+    <div class="card">
+      <div class="card-header bg-info">
+        <h4 class="card-title m-b-0 text-white">Permisos</h4>
+      </div>
+      <div class="card-body">
+        <ul class="list-unstyled team-members">
+          <li>
+            <div class="row" *ngFor="let item of RolSeleccionado?.permisos" >
+              <div class="col-md-2 col-2">
+                <div class="avatar">
+                  <img src="assets/img/faces/llave.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                </div>
+              </div>
+              <div class="col-md-7 col-7">
+                {{item.nombre}}
+                <br />
+                <span class="text-success">
+                  <small>Rol</small>
+                </span>
+              </div>
+              <div class="col-md-3 col-3 text-right">
+                <button class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-key"></i></button>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>

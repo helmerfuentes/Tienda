@@ -67,7 +67,7 @@ export class RegistrarComponent implements OnInit {
       this.serviceGeneric.postPatch<IResponseHttp<IProducto>>('Producto',this.form.value,null,'post')
       .subscribe(res=>{
         this.notificacionSetvice.exitoso("Exitoso",res.message);
-        this.router.navigate(['/ListarProducto']);
+        this.router.navigate(['/Productos']);
       })
       return;
     }
