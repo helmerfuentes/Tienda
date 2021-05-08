@@ -36,7 +36,7 @@ export const AdminLayoutRoutes: Routes = [
   canActivate:[NgxPermissionsGuard],
   data:{
     permissions: {
-      only: ['LIDER'],
+      only: ['LIDER','VENTAS'],
       redirectTo: '/dashboard'
 
     }
