@@ -15,21 +15,75 @@ import { RegistroCompraComponent } from '../../pages/Compras/registro-compra/reg
 import { ListarVentaComponent } from '../../pages/Ventas/listar-venta/listar-venta.component';
 import { ListarUsuarioComponent } from '../../pages/Usuario/listar-usuario/listar-usuario.component';
 import { RegistrarUsuarioComponent } from '../../pages/Usuario/registrar-usuario/registrar-usuario.component';
+import { RegistroVentaComponent } from '../../pages/Ventas/registro-venta/registro-venta.component';
+import { NgxPermissionsGuard } from 'ngx-permissions';
 
 export const AdminLayoutRoutes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'Productos', component: ListarComponent },
-  { path: 'RegistrarProducto/:id', component: RegistrarComponent },
-  { path: 'Compras', component: ListadoCompraComponent },
-  { path: 'Ventas', component: ListarVentaComponent },
-  { path: 'RegistrarCompra', component: RegistroCompraComponent },
-  { path: 'Usuarios', component: ListarUsuarioComponent },
-  { path: 'RegistrarUsuarios/:id', component: RegistrarUsuarioComponent },
-  { path: 'user', component: UserComponent },
-  { path: 'table', component: TableComponent },
-  { path: 'typography', component: TypographyComponent },
-  { path: 'icons', component: IconsComponent },
-  { path: 'maps', component: MapsComponent },
-  { path: 'notifications', component: NotificationsComponent },
-  { path: 'upgrade', component: UpgradeComponent }
+  { path: 'dashboard', component: DashboardComponent},
+
+  { path: 'Productos', component: ListarComponent, },
+  { path: 'RegistrarProducto/:id', component: RegistrarComponent,
+  canActivate:[NgxPermissionsGuard],
+    data:{
+      permissions: {
+        only: ['LIDER'],
+        redirectTo: '/dashboard'
+
+      }
+    }
+  },
+  { path: 'Compras', component: ListadoCompraComponent,
+  canActivate:[NgxPermissionsGuard],
+  data:{
+    permissions: {
+      only: ['LIDER'],
+      redirectTo: '/dashboard'
+
+    }
+  } },
+  { path: 'Ventas', component: ListarVentaComponent,
+  canActivate:[NgxPermissionsGuard],
+  data:{
+    permissions: {
+      only: ['VENTAS'],
+      redirectTo: '/dashboard'
+
+    }
+  } },
+  { path: 'RegistrarCompra', component: RegistroCompraComponent,
+  canActivate:[NgxPermissionsGuard],
+  data:{
+    permissions: {
+      only: ['LIDER'],
+      redirectTo: '/dashboard'
+
+    }
+  }},
+  { path: 'RegistrarVenta', component: RegistroVentaComponent,
+  canActivate:[NgxPermissionsGuard],
+  data:{
+    permissions: {
+      only: ['VENTAS'],
+      redirectTo: '/dashboard'
+
+    }
+  } },
+  { path: 'Usuarios', component: ListarUsuarioComponent,
+  canActivate:[NgxPermissionsGuard],
+  data:{
+    permissions: {
+      only: ['LIDER'],
+      redirectTo: '/dashboard'
+
+    }
+  } },
+  { path: 'RegistrarUsuarios/:id', component: RegistrarUsuarioComponent,
+  canActivate:[NgxPermissionsGuard],
+  data:{
+    permissions: {
+      only: ['LIDER'],
+      redirectTo: '/dashboard'
+
+    }
+  } },
 ];

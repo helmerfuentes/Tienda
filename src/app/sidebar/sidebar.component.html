@@ -11,11 +11,27 @@
     </a>
   </div>
     <ul class="nav">
+      <li>
+        <a routerLink="/dashboard">
+          <i class="nc-icon nc-bank"></i>
+          <p>Dashboard</p>
+        </a>
+      </li>
         <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}">
-            <a [routerLink]="[menuItem.path]">
+
+          <a *ngxPermissionsOnly="menuItem.rol" [routerLink]="[menuItem.path]" >
                 <i class="nc-icon {{menuItem.icon}}"></i>
                 <p>{{menuItem.title}}</p>
             </a>
         </li>
+
+        <li >
+          <a (click)="salir()">
+          <i class="nc-icon nc-button-power"></i>
+          <p>Salir</p>
+          </a>
+        </li>
+
     </ul>
+
 </div>

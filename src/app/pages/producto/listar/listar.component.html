@@ -13,16 +13,22 @@
           [Columns]="Columns"
           [rutaApi]="RutaApi"
           >
-          <button
-          [routerLink]="['/RegistrarProducto','nuevo']"
+          <div
+          *ngxPermissionsOnly="['LIDER']"
+          >
+            <button
+            [routerLink]="['/RegistrarProducto','nuevo']"
             type="button"
             class="btn btn-outline-info text-right"
-          >
+            >
             <i class="fa fa-plus-square"></i> Nuevo producto
           </button>
+        </div>
           </app-tabla>
+
+
           <ng-template #actionTpl let-row let-rowIndex="rowIndex">
-            <div>
+            <div *ngxPermissionsOnly="['LIDER']">
               <button
                 data-toggle="modal"
                 data-target=".bd-example-modal-lg"

@@ -1,1 +1,150 @@
-<p>registro-venta works!</p>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-user">
+      <div class="card-header bg-info">
+        <h4 class="m-b-0 text-white">Registrar Venta</h4>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="form" >
+          <div class="form-body">
+            <h3 class="card-title">Cliente</h3>
+            <hr>
+          <fieldset formGroupName="persona">
+          <div class="row">
+            <div class="col-md-6 pr-1">
+              <div class="form-group">
+                <label>Documento</label>
+                <input type="text" class="form-control "  formControlName="documento" name="documento" placeholder="Documento a buscar" >
+              </div>
+            </div>
+            <div class="col-md-6 pr-1">
+              <div class="form-group">
+                <label></label>
+                <div class="update ml-auto mr-auto">
+                  <button (click)="buscarPersona()"  class="btn btn-primary btn-round">Buscar Cliente</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" >
+            <div class="col-md-4 pr-1">
+              <div class="form-group">
+                <label>Nombres</label>
+                <input type="text" class="form-control" formControlName="nombres" name="name"   placeholder="Primer y segundo nombre" >
+              </div>
+            </div>
+            <div class="col-md-4 pl-1">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Apellidos</label>
+                <input type="text" class="form-control"   formControlName="apellidos" name="apellidos" placeholder="Primer y segundo apellido" >
+              </div>
+            </div>
+            <div class="col-md-4 pl-1">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Dirección</label>
+                <input type="text" class="form-control"  formControlName="direccion" name="direccion" placeholder="Dirreción residencia">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 pr-1">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Telefono</label>
+                <input type="text" class="form-control"  formControlName="telefono" name="telefono" placeholder="">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+          <br>
+          <h3 class="box-title m-t-40"> Agregar Productos</h3>
+          <hr>
+          <fieldset formGroupName="detalle">
+                  <div class="row">
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                        <label>Categoria</label>
+                        <select  name="juzgado"   (change)="MostrarCategoria($event.target.value)" class="form-control custom-select">
+                          <option value="">--Seleccione--</option>
+                          <option *ngFor="let item of Categorias" [value]="item.id" >{{item.nombre}}</option>
+                      </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                        <label>Producto</label>
+                        <select  name="juzgado"  name="producto" formControlName="productoId" (change)="MostrarProducto($event.target.value)" class="form-control custom-select">
+                          <option value="0">--Seleccione--</option>
+                          <option *ngFor="let item of Productos" value="{{item.id}}" >{{item.nombre}}</option>
+                      </select>
+                      </div>
+                    </div>
+
+
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4 pr-1">
+                      <div class="form-group">
+                        <label> Precio producto</label>
+                        <input type="text" class="form-control" name="precio" formControlName="precioUnitario" placeholder="valor unitario producto" >
+                      </div>
+                    </div>
+                    <div class="col-md-4 px-1">
+                      <div class="form-group">
+                        <label>Cantidad</label>
+                        <input type="text" class="form-control" name="cantidad" formControlName="cantidad" placeholder="Cantidad de producto a vender" >
+                      </div>
+                    </div>
+                    <div class="col-md-4 px-1">
+                      <div class="form-group">
+                        <label>Procoentaje descuento</label>
+                        <input type="text" class="form-control" formControlName="descuento" name="descuento" placeholder="Porcentaje descuento" >
+                      </div>
+                    </div>
+
+                  </div>
+                </fieldset>
+                </div>
+
+
+
+
+          <div class="row">
+            <div class="update ml-auto mr-auto">
+              <button (click)="AgregarDetalle()" class="btn btn-primary btn-round">Agregar Producto</button>
+            </div>
+          </div>
+          <br>
+          <app-tabla
+          [Columns]="Columns"
+          >
+         <div>
+           <h3>{{valorFactura}}</h3>
+         </div>
+
+          </app-tabla>
+          <ng-template #actionTpl let-row let-rowIndex="rowIndex">
+            <div>
+              <button
+              class="btn waves-effect waves-light btn-outline-danger"
+              (click)="EliminarDetalle(row)"
+            >
+              <i class="fa fa-trash-o"></i>
+            </button>
+            </div>
+          </ng-template>
+
+          <div class="row">
+            <div class="update ml-auto mr-auto">
+              <button (click)="onSubmit()" class="btn btn-primary btn-round">Registrar Factura</button>
+            </div>
+            <div class="update ml-auto mr-auto">
+              <button routerLink="/Ventas"  class="btn btn-danger btn-round">Volver al listado</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>

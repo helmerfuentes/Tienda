@@ -7,4 +7,5 @@ export interface IProducto{
   cantidadDisponible:number;
   categoria:string;
   porcentajeUtilidad:number;
+  fecha:Date;
 }

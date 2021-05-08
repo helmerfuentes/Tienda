@@ -21,9 +21,11 @@ import { RegistroVentaComponent } from './pages/Ventas/registro-venta/registro-v
 import { RegistroCompraComponent } from './pages/Compras/registro-compra/registro-compra.component';
 import { ListadoCompraComponent } from './pages/Compras/listado-compra/listado-compra.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxPermissionsModule } from "ngx-permissions";
 import { ListarVentaComponent } from './pages/Ventas/listar-venta/listar-venta.component';
+import { LoginComponent } from './pages/login/login.component';
+import { InterceptorService } from "./Service/Interceptor/interceptor.service";
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { ListarVentaComponent } from './pages/Ventas/listar-venta/listar-venta.c
     RegistroCompraComponent,
     ListadoCompraComponent,
     ListarVentaComponent,
+    LoginComponent,
   ],
   imports: [
     RouterModule.forRoot(AppRoutes,{
@@ -53,7 +56,11 @@ import { ListarVentaComponent } from './pages/Ventas/listar-venta/listar-venta.c
 
 
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
