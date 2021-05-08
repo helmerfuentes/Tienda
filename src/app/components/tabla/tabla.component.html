@@ -1,0 +1,44 @@
+<div class="columns">
+  <div class="column col-12">
+
+    <div class="row justify-content-between">
+      <div class="col-4">
+        <div id="example23_filter"  class="dataTables_filter">
+          <label>Buscar:
+            <input
+            class="form-input"
+            type="text"
+            id="globalSearch"
+            (input)="onChange($event)"
+            placeholder="Search"
+          />
+        </label>
+
+        </div>
+
+      </div>
+      <div class="col-4">
+        <ng-content seleect="button"></ng-content>
+      </div>
+    </div>
+    <br>
+
+  </div>
+</div>
+
+<ngx-table
+[configuration]="configuration"
+[data]="data"
+[columns]="Columns"
+[noResultsTemplate]="noResultsTemplate"
+#table
+>
+
+</ngx-table>
+
+
+<ng-template #noResultsTemplate>
+  <td [attr.colspan]="Columns?.length" class="no-results">
+    No se encontro resultados :(
+  </td>
+</ng-template>
